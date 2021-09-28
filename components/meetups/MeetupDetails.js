@@ -1,10 +1,10 @@
-import Image from 'next/image';
+/* eslint-disable @next/next/no-img-element */
 import classes from './MeetupDetails.module.css';
 
 const MeetupDetails = ({ image, title, address, description }) => {
   return (
     <section className={classes.details}>
-      <Image src={image} alt={title} />
+      <img src={image} alt={title} />
       <h1>{title}</h1>
       <address>{address}</address>
       <p>{description}</p>

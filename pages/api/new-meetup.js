@@ -13,7 +13,7 @@ async function handler(req, res) {
         `mongodb+srv://admin-abay:${process.env.DB_ACCESS_KEY}@cluster0.390sm.mongodb.net/meetups?retryWrites=true&w=majority`
       );
 
-      console.log('Connected to database!');
+      // console.log('Connected to database!');
 
       const db = client.db();
 
@@ -21,14 +21,14 @@ async function handler(req, res) {
 
       const result = await meetupsCollection.insertOne(data);
 
-      console.log(result);
+      // console.log(result);
 
       client.close();
 
       res.status(201).json({ message: 'Meetup inserted!' });
     } catch (error) {
       console.error(error.message);
-      process.exit(1); //Exit the app is there are errors
+      process.exit(1); //Exit the app if there are errors
     }
   }
 }
