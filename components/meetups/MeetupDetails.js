@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import classes from './MeetupDetails.module.css';
 
-const MeetupDetails = ({ image, title, address, description }) => {
+const MeetupDetails = ({ meetupData }) => {
+  const { image, title, address, description } = meetupData;
   return (
     <section className={classes.details}>
       <img src={image} alt={title} />

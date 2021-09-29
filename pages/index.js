@@ -12,8 +12,6 @@ export async function getStaticProps() {
       `mongodb+srv://admin-abay:${process.env.DB_ACCESS_KEY}@cluster0.390sm.mongodb.net/meetups?retryWrites=true&w=majority`
     );
 
-    console.log('Connected to database!');
-
     const db = client.db();
 
     const meetupsCollection = db.collection('meetups');
@@ -22,7 +20,6 @@ export async function getStaticProps() {
 
     client.close();
 
-    console.log(meetups);
     return {
       props: {
         meetups: meetups.map((meetup) => ({
