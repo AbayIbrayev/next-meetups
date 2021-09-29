@@ -6,7 +6,7 @@ function HomePage({ meetups }) {
   return <MeetupList meetups={meetups} />;
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   try {
     const client = await MongoClient.connect(
       `mongodb+srv://admin-abay:${process.env.DB_ACCESS_KEY}@cluster0.390sm.mongodb.net/meetups?retryWrites=true&w=majority`
@@ -29,7 +29,6 @@ export async function getStaticProps() {
           id: meetup._id.toString(),
         })),
       },
-      revalidate: 1,
     };
   } catch (error) {
     console.error(error.message);
@@ -37,7 +36,6 @@ export async function getStaticProps() {
       props: {
         meetups: '',
       },
-      revalidate: 1,
     };
   }
 }
